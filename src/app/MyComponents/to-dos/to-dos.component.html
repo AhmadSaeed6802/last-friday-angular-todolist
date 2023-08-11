@@ -1,0 +1,22 @@
+<!-- <p>to-dos works!</p> -->
+
+<!-- <ul *ngFor="let Todo of todoshere">
+    <li>{{Todo.sno}}-{{Todo.title}}-{{Todo.desc}}</li>
+</ul> -->
+<h1 class="text-center">Welcome To Todos List</h1>
+<div class="container">
+  <app-add-tod (todoAdd)="addTodo($event)"></app-add-tod>
+  <h4>Your Todos</h4>
+  <!-- <p>{{ todos}}</p> -->
+  <div *ngIf="this.todoshere.length === 0; else empty">No Todos to display</div>
+
+  <ng-template #empty>
+    <div *ngFor="let Todo of todoshere.reverse()">
+      <app-todo-item
+        [Todo]="Todo"
+        (todoDelete)="deleteTodo($event)"
+        (todoCheckbox)="toggleTodo($event)"
+      ></app-todo-item>
+    </div>
+  </ng-template>
+</div>
